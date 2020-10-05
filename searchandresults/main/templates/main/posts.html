@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<form action="{% url 'search' %}" class="navbar-form" method="get" >
+    <div class="input-group" style="width:106%;border-radius:25px;">
+        <input   name="q"  id="id_q" type="text" class="form-control"  style="font-size:.9em;border-width:1px;border-color:gray;opacity:1;border-radius:0.78383px;color:black;"   />
+        <button style="margin-left:1px;color:maroon;letter-spacing:.5px;font-weight:600;" class="btn btn-outline-secondary btn-sm" type="submit">search</button>
+
+    </div>
+
+</form>
+<form action="{% url 'post' %}" method="post">
+    {% csrf_token %}
+ <button style="margin-left:70%;color:white;letter-spacing:.5px;font-weight:600;" class="btn btn-outline-primary btn-sm" type="submit">Post</button>
+
+    </form>
+<h1>Search List</h1>
+{% for posts in post %}
+<ul style="list-style:none;">
+
+<li><span style="color:red;">USERNAME:</span>{{posts.username}}
+    <span style="color:red">ID:</span>{{posts.userid}}</li>
+    <br>
+    <hr>
+
+    </ul>
+{% empty %}
+No posts
+{%endfor %}
+</body>
+</html>
+
+

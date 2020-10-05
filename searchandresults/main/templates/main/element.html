@@ -1,0 +1,16 @@
+<link rel="import" href="...bower_components/polymer/polymer.js">
+<polymer-element name="element">
+    <template>
+        {% for post in posts %}
+<div class="list" style="margin-top:10%;margin-left:50%">
+    <p>{{post.username}}</p>
+    <p>{{post.userid}}</p>
+    </div>
+{% empty %}
+<p>No results </p>
+{% endfor %}
+        <script type="javascript">
+document.getElementById("id_q").value="{{query}}"
+</script>
+    </template>
+</polymer-element>

@@ -1,0 +1,42 @@
+{% load widget_tweaks %}
+{% block content %}
+<br>
+
+<div class="modal-header text-center"  style="margin-top:20px;">
+    <form method="POST" enctype="multipart/form-data">
+        {%csrf_token%}
+        <fieldset class="form-group">
+            <legend class="modal-title text-center" style="font-size:1.2em;font-weight:700;">Info
+
+
+
+            </legend>
+
+        </fieldset>
+        <div class="modal-body">
+            {% for field in form.visible_fields %}
+            <div class="form-group{%if field.errors %}invalid {%endif%}">
+
+              <label style="color:darkslateblue">{{field.label}}</label>
+                {{field|add_class:'form-control'}}
+                <div class="{% if field.errors %} invalid{% endif %}">
+                    {% for error in field.errors %}
+                    <p  class="help-block">{{error}}</p>
+                    {%endfor%}
+
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+<div class="modal-footer">
+            <button   class="btn btn-success btn-sm" type="submit">Send</button>
+
+</div>
+    </form>
+
+</div>
+<hr>
+
+{% endblock %}
